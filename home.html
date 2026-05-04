@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+
+            z-index: -1;
+
+            opacity: 0.6;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: clamp(60px, 15vw, 200px);
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin: 0;
+
+        }
+
+        .social-logos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+            padding: 0 10px;
+        }
+
+        .social-logos img {
+            width: 60px;
+            height: 60px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-logos img:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-primary {
+            position: center;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            background-color: rgb(0, 103, 12);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 10;
+            width: 300px;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 18px;
+            height: 60px;
+            width: 80px;
+
+
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.1);
+            background-color: rgb(0, 0, 0);
+        }
+
+        @media (max-width: 768px) {
+            .social-logos {
+                gap: 25px;
+                margin-top: 20px;
+            }
+
+            .social-logos img {
+                width: 45px;
+                height: 45px;
+            }
+
+
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            font-family: cursive;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .secondary-btn {
+            background-color: rgb(0, 73, 9);
+            color: #ffffff;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgb(105, 0, 2);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hidden-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-15px);
+            overflow: hidden;
+
+            transition: max-height 0.4s ease-in-out,
+                opacity 0.4s ease-in-out,
+                transform 0.4s ease-in-out;
+        }
+
+        .hidden-buttons.show {
+            max-height: 200px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        ROHIT
+    </h1>
+
+
+    <div class="social-logos">
+        <a href="https://www.instagram.com/rohitvooda/?hl=en" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"
+                width="100">
+        </a>
+        <a href="https://discord.com/manchoduu" target="_blank">
+            <img src="https://cdn.simpleicons.org/discord" alt="Discord">
+        </a>
+        <a href="" target="_blank">
+            <img src="https://cdn.simpleicons.org/roblox/white" alt="Roblox">
+        </a>
+        <a href="https://github.com/rohitvooda" target="_blank">
+            <img src="https://cdn.simpleicons.org/github/white" alt="GitHub">
+        </a>
+    </div>
+
+    <video class="background-video" autoplay loop muted playsinline
+        src="assets/vidssave.com THIS IS 4K ANIME (Tanjiro Kamado) 1440P.mp4"></video>
+
+    <div class="button-container">
+        <button id="about-toggle-btn" class="btn-primary" aria-expanded="false"
+            aria-controls="additional-buttons">Explode!</button>
+
+        <div id="additional-buttons" class="hidden-buttons">
+            <a href="https://github.com/rohitvooda" <button class="btn secondary-btn">Projects</button> </a>
+            <button class="btn secondary-btn">UIUX</button>
+            <button class="btn secondary-btn">About</button>
+            <button class="btn secondary-btn">Contact</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const aboutBtn = document.getElementById('about-toggle-btn');
+            const additionalButtons = document.getElementById('additional-buttons');
+
+            aboutBtn.addEventListener('click', () => {
+                additionalButtons.classList.toggle('show');
+
+                const isExpanded = additionalButtons.classList.contains('show');
+                aboutBtn.setAttribute('aria-expanded', isExpanded);
+            });
+        });
+    </script>
+</body>
+
+</html>
