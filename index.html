@@ -9,13 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Custom Cursor styling */
-        * {
-            cursor: none !important; /* Hide default cursor */
-        }
 
+    <style>
         body {
             background-color: black;
             color: white;
@@ -26,31 +21,6 @@
             min-height: 100vh;
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-        }
-
-        /* Custom Cursor Elements */
-        .cursor-dot,
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: white;
-        }
-
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
         }
 
         /* Video Background */
@@ -77,8 +47,13 @@
         }
 
         @keyframes pulse-glow {
-            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e6e6, 0 0 40px #00e6e6; }
-            to { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00e6e6, 0 0 20px #00e6e6; }
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e6e6, 0 0 40px #00e6e6;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00e6e6, 0 0 20px #00e6e6;
+            }
         }
 
         /* Social Logos with Glassmorphism */
@@ -106,7 +81,7 @@
 
         .social-logos a:hover img {
             transform: scale(1.2) translateY(-5px);
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
         }
 
         /* Buttons */
@@ -190,7 +165,7 @@
             right: 30px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             width: 50px;
             height: 50px;
@@ -201,7 +176,7 @@
             z-index: 100;
             padding: 0;
         }
-        
+
         .audio-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
@@ -214,7 +189,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
             z-index: 1000;
             display: flex;
@@ -263,27 +238,22 @@
                 gap: 20px;
                 padding: 10px 20px;
             }
+
             .social-logos img {
                 width: 40px;
                 height: 40px;
             }
-            /* Disable custom cursor on mobile */
-            * { cursor: auto !important; }
-            .cursor-dot, .cursor-outline { display: none; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
     <!-- Audio Toggle -->
     <button class="btn audio-toggle hover-target" id="audio-toggle" title="Toggle Audio">🔇</button>
 
     <!-- Background Video -->
-    <video class="background-video" id="bg-video" autoplay loop muted playsinline src="assets/vidssave.com THIS IS 4K ANIME (Tanjiro Kamado) 1440P.mp4"></video>
+    <video class="background-video" id="bg-video" autoplay loop muted playsinline
+        src="assets/vidssave.com THIS IS 4K ANIME (Tanjiro Kamado) 1440P.mp4"></video>
 
     <h1>ROHIT</h1>
 
@@ -303,7 +273,8 @@
     </div>
 
     <div class="button-container">
-        <button id="about-toggle-btn" class="btn btn-primary hover-target" aria-expanded="false" aria-controls="additional-buttons">EXPLODE!</button>
+        <button id="about-toggle-btn" class="btn btn-primary hover-target" aria-expanded="false"
+            aria-controls="additional-buttons">EXPLODE!</button>
 
         <div id="additional-buttons" class="hidden-buttons">
             <a href="https://github.com/rohitvooda" class="btn secondary-btn hover-target" target="_blank">Projects</a>
@@ -317,7 +288,8 @@
     <div id="about-modal" class="modal">
         <div class="modal-content">
             <h2>About Me</h2>
-            <p>Hi, I'm Rohit! I'm a developer and designer passionate about creating beautiful, interactive web experiences.</p>
+            <p>Hi, I'm Rohit! I'm a developer and designer passionate about creating beautiful, interactive web
+                experiences.</p>
             <button class="btn secondary-btn modal-close hover-target" onclick="closeModals()">Close</button>
         </div>
     </div>
@@ -334,43 +306,13 @@
     <div id="uiux-modal" class="modal">
         <div class="modal-content">
             <h2>UI/UX Design</h2>
-            <p>This entire portfolio is a testament to my design skills. I specialize in Dark Mode, Glassmorphism, and smooth animations!</p>
+            <p>This entire portfolio is a testament to my design skills. I specialize in Dark Mode, Glassmorphism, and
+                smooth animations!</p>
             <button class="btn secondary-btn modal-close hover-target" onclick="closeModals()">Close</button>
         </div>
     </div>
 
     <script>
-        // Custom Cursor Logic
-        const cursorDot = document.getElementById("cursor-dot");
-        const cursorOutline = document.getElementById("cursor-outline");
-        const hoverTargets = document.querySelectorAll(".hover-target, a, button");
-
-        window.addEventListener("mousemove", (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Animate outline for smooth trailing effect
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // Hover effect for interactive elements
-        hoverTargets.forEach(target => {
-            target.addEventListener("mouseenter", () => {
-                cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
-                cursorOutline.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            });
-            target.addEventListener("mouseleave", () => {
-                cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
-                cursorOutline.style.backgroundColor = "transparent";
-            });
-        });
-
         // Toggle Buttons Logic
         document.addEventListener('DOMContentLoaded', () => {
             const aboutBtn = document.getElementById('about-toggle-btn');
@@ -386,9 +328,9 @@
         // Audio Toggle Logic
         const audioBtn = document.getElementById("audio-toggle");
         const video = document.getElementById("bg-video");
-        
+
         audioBtn.addEventListener("click", () => {
-            if(video.muted) {
+            if (video.muted) {
                 video.muted = false;
                 audioBtn.innerText = "🔊";
             } else {
@@ -410,7 +352,7 @@
 
         // Close modal when clicking anywhere outside the modal content
         window.addEventListener('click', (e) => {
-            if(e.target.classList.contains('modal')) {
+            if (e.target.classList.contains('modal')) {
                 closeModals();
             }
         });
