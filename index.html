@@ -4,8 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ROHIT | Portfolio</title>
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* Custom Cursor styling */
+        * {
+            cursor: none !important; /* Hide default cursor */
+        }
+
         body {
             background-color: black;
             color: white;
@@ -14,9 +24,36 @@
             flex-direction: column;
             justify-content: center;
             min-height: 100vh;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
         }
 
+        /* Custom Cursor Elements */
+        .cursor-dot,
+        .cursor-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
 
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: white;
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Video Background */
         .background-video {
             position: fixed;
             top: 0;
@@ -24,139 +61,120 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
-
             z-index: -1;
-
             opacity: 0.6;
         }
 
+        /* Glowing Title */
         h1 {
             text-align: center;
-            font-family: Arial, Helvetica, sans-serif;
-
             font-size: clamp(60px, 15vw, 200px);
-            font-weight: 600;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 700;
             margin: 0;
-
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e6e6, 0 0 40px #00e6e6;
+            animation: pulse-glow 2s infinite alternate;
         }
 
+        @keyframes pulse-glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00e6e6, 0 0 40px #00e6e6; }
+            to { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00e6e6, 0 0 20px #00e6e6; }
+        }
+
+        /* Social Logos with Glassmorphism */
         .social-logos {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 40px;
             margin-top: 30px;
-            padding: 0 10px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-logos img {
-            width: 60px;
-            height: 60px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        .social-logos img:hover {
-            transform: scale(1.2);
+        .social-logos a:hover img {
+            transform: scale(1.2) translateY(-5px);
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
         }
 
-        .btn-primary {
-            position: center;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            font-size: 20px;
-            border-radius: 10px;
-            background-color: rgb(0, 103, 12);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            z-index: 10;
-            width: 300px;
-            justify-content: center;
-            align-items: center;
-            height: 80px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: cursive;
-            font-weight: bold;
-            font-size: 18px;
-            height: 60px;
-            width: 80px;
-
-
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.1);
-            background-color: rgb(0, 0, 0);
-        }
-
-        @media (max-width: 768px) {
-            .social-logos {
-                gap: 25px;
-                margin-top: 20px;
-            }
-
-            .social-logos img {
-                width: 45px;
-                height: 45px;
-            }
-
-
-        }
-
+        /* Buttons */
         .button-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 15px;
             z-index: 10;
+            margin-top: 40px;
         }
 
         .btn {
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-size: 16px;
-            font-weight: bold;
-            font-family: cursive;
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
             border: none;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: rgba(0, 103, 12, 0.8);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 200px;
+            height: 60px;
+            font-size: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 200, 20, 0.8);
+            box-shadow: 0 0 20px rgba(0, 200, 20, 0.5);
         }
 
         .secondary-btn {
-            background-color: rgb(0, 73, 9);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-width: 100px;
+            display: inline-block;
+            text-align: center;
         }
 
         .secondary-btn:hover {
-            background-color: rgb(105, 0, 2);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .hidden-buttons {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
-
             max-height: 0;
             opacity: 0;
-            transform: translateY(-15px);
+            transform: translateY(-20px);
             overflow: hidden;
-
-            transition: max-height 0.4s ease-in-out,
-                opacity 0.4s ease-in-out,
-                transform 0.4s ease-in-out;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hidden-buttons.show {
@@ -164,58 +182,237 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Audio Toggle */
+        .audio-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            z-index: 100;
+            padding: 0;
+        }
+        
+        .audio-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Modals (Glassmorphism popups) */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            margin-top: 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .modal-close:hover {
+            background: white;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .social-logos {
+                gap: 20px;
+                padding: 10px 20px;
+            }
+            .social-logos img {
+                width: 40px;
+                height: 40px;
+            }
+            /* Disable custom cursor on mobile */
+            * { cursor: auto !important; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
     </style>
 </head>
 
 <body>
-    <h1>
-        ROHIT
-    </h1>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
 
+    <!-- Audio Toggle -->
+    <button class="btn audio-toggle hover-target" id="audio-toggle" title="Toggle Audio">🔇</button>
+
+    <!-- Background Video -->
+    <video class="background-video" id="bg-video" autoplay loop muted playsinline src="assets/vidssave.com THIS IS 4K ANIME (Tanjiro Kamado) 1440P.mp4"></video>
+
+    <h1>ROHIT</h1>
 
     <div class="social-logos">
-        <a href="https://www.instagram.com/rohitvooda/?hl=en" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram"
-                width="100">
+        <a href="https://www.instagram.com/rohitvooda/?hl=en" target="_blank" class="hover-target">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
         </a>
-        <a href="https://discord.com/manchoduu" target="_blank">
-            <img src="https://cdn.simpleicons.org/discord" alt="Discord">
+        <a href="https://discord.com/manchoduu" target="_blank" class="hover-target">
+            <img src="https://cdn.simpleicons.org/discord/white" alt="Discord">
         </a>
-        <a href="" target="_blank">
+        <a href="" target="_blank" class="hover-target">
             <img src="https://cdn.simpleicons.org/roblox/white" alt="Roblox">
         </a>
-        <a href="https://github.com/rohitvooda" target="_blank">
+        <a href="https://github.com/rohitvooda" target="_blank" class="hover-target">
             <img src="https://cdn.simpleicons.org/github/white" alt="GitHub">
         </a>
     </div>
 
-    <video class="background-video" autoplay loop muted playsinline
-        src="assets/vidssave.com THIS IS 4K ANIME (Tanjiro Kamado) 1440P.mp4"></video>
-
     <div class="button-container">
-        <button id="about-toggle-btn" class="btn-primary" aria-expanded="false"
-            aria-controls="additional-buttons">Explode!</button>
+        <button id="about-toggle-btn" class="btn btn-primary hover-target" aria-expanded="false" aria-controls="additional-buttons">EXPLODE!</button>
 
         <div id="additional-buttons" class="hidden-buttons">
-            <a href="https://github.com/rohitvooda" <button class="btn secondary-btn">Projects</button> </a>
-            <button class="btn secondary-btn">UIUX</button>
-            <button class="btn secondary-btn">About</button>
-            <button class="btn secondary-btn">Contact</button>
+            <a href="https://github.com/rohitvooda" class="btn secondary-btn hover-target" target="_blank">Projects</a>
+            <button class="btn secondary-btn hover-target" onclick="openModal('uiux-modal')">UI/UX</button>
+            <button class="btn secondary-btn hover-target" onclick="openModal('about-modal')">About</button>
+            <button class="btn secondary-btn hover-target" onclick="openModal('contact-modal')">Contact</button>
         </div>
     </div>
 
+    <!-- Glassmorphism Modals -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <h2>About Me</h2>
+            <p>Hi, I'm Rohit! I'm a developer and designer passionate about creating beautiful, interactive web experiences.</p>
+            <button class="btn secondary-btn modal-close hover-target" onclick="closeModals()">Close</button>
+        </div>
+    </div>
+
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <h2>Get In Touch</h2>
+            <p>Connect with me on Discord: <strong>manchoduu</strong></p>
+            <p>Or check out my GitHub and Instagram below!</p>
+            <button class="btn secondary-btn modal-close hover-target" onclick="closeModals()">Close</button>
+        </div>
+    </div>
+
+    <div id="uiux-modal" class="modal">
+        <div class="modal-content">
+            <h2>UI/UX Design</h2>
+            <p>This entire portfolio is a testament to my design skills. I specialize in Dark Mode, Glassmorphism, and smooth animations!</p>
+            <button class="btn secondary-btn modal-close hover-target" onclick="closeModals()">Close</button>
+        </div>
+    </div>
 
     <script>
+        // Custom Cursor Logic
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorOutline = document.getElementById("cursor-outline");
+        const hoverTargets = document.querySelectorAll(".hover-target, a, button");
+
+        window.addEventListener("mousemove", (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Animate outline for smooth trailing effect
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover effect for interactive elements
+        hoverTargets.forEach(target => {
+            target.addEventListener("mouseenter", () => {
+                cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+                cursorOutline.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+            });
+            target.addEventListener("mouseleave", () => {
+                cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+                cursorOutline.style.backgroundColor = "transparent";
+            });
+        });
+
+        // Toggle Buttons Logic
         document.addEventListener('DOMContentLoaded', () => {
             const aboutBtn = document.getElementById('about-toggle-btn');
             const additionalButtons = document.getElementById('additional-buttons');
 
             aboutBtn.addEventListener('click', () => {
                 additionalButtons.classList.toggle('show');
-
                 const isExpanded = additionalButtons.classList.contains('show');
                 aboutBtn.setAttribute('aria-expanded', isExpanded);
             });
+        });
+
+        // Audio Toggle Logic
+        const audioBtn = document.getElementById("audio-toggle");
+        const video = document.getElementById("bg-video");
+        
+        audioBtn.addEventListener("click", () => {
+            if(video.muted) {
+                video.muted = false;
+                audioBtn.innerText = "🔊";
+            } else {
+                video.muted = true;
+                audioBtn.innerText = "🔇";
+            }
+        });
+
+        // Modals Logic
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
+
+        // Close modal when clicking anywhere outside the modal content
+        window.addEventListener('click', (e) => {
+            if(e.target.classList.contains('modal')) {
+                closeModals();
+            }
         });
     </script>
 </body>
